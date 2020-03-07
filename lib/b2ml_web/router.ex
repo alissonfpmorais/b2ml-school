@@ -17,6 +17,9 @@ defmodule B2mlWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/teachers", TeacherController
+    resources "/students", StudentController
+    resources "/classes", ClassController
   end
 
   # Other scopes may use custom stacks.

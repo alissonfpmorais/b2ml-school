@@ -1,0 +1,28 @@
+<h1>Show Class</h1>
+
+<ul>
+
+  <li>
+    <strong>Code:</strong>
+    <%= @class.code %>
+  </li>
+
+  <li>
+    <strong>Room:</strong>
+    <%= @class.room %>
+  </li>
+
+  <li>
+    <strong>Open date:</strong>
+    <%= @class.open_date %>
+  </li>
+
+  <li>
+    <strong>Close date:</strong>
+    <%= @class.close_date %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.class_path(@conn, :edit, @class) %></span>
+<span><%= link "Back", to: Routes.class_path(@conn, :index) %></span>
