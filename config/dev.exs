@@ -5,7 +5,7 @@ config :b2ml, B2ml.Repo,
   username: "postgres",
   password: "postgres",
   database: "b2ml_dev",
-  hostname: "localhost",
+  hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

@@ -13,9 +13,9 @@ services:
 
   db:
     image: postgres
-    expose:
-      - 5432
+    ports:
+      - "5432:5432"
     environment:
-      - POSTGRES_DB=blog_dev
+      - POSTGRES_DB=b2ml_dev
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
