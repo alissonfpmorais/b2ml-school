@@ -1,28 +1,28 @@
-<h1>Show Class</h1>
+<h1><%= gettext "Class" %></h1>
 
 <ul>
 
   <li>
-    <strong>Code:</strong>
+    <strong><%= gettext "Code" %>:</strong>
     <%= @class.code %>
   </li>
 
   <li>
-    <strong>Room:</strong>
+    <strong><%= gettext "Room" %>:</strong>
     <%= @class.room %>
   </li>
 
   <li>
-    <strong>Open date:</strong>
+    <strong><%= gettext "Open date" %>:</strong>
     <%= @class.open_date %>
   </li>
 
   <li>
-    <strong>Close date:</strong>
+    <strong><%= gettext "Close date" %>:</strong>
     <%= @class.close_date %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.class_path(@conn, :edit, @class) %></span>
-<span><%= link "Back", to: Routes.class_path(@conn, :index) %></span>
+<span><%= link gettext("Edit"), to: Routes.class_path(@conn, :edit, @class) %></span>
+<span><%= link gettext("Back"), to: Routes.class_path(@conn, :index) %></span>

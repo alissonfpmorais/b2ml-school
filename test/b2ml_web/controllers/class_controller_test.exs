@@ -3,8 +3,18 @@ defmodule B2mlWeb.ClassControllerTest do
 
   alias B2ml.School
 
-  @create_attrs %{close_date: "2010-04-17T14:00:00Z", code: "some code", open_date: "2010-04-17T14:00:00Z", room: "some room"}
-  @update_attrs %{close_date: "2011-05-18T15:01:01Z", code: "some updated code", open_date: "2011-05-18T15:01:01Z", room: "some updated room"}
+  @create_attrs %{
+    close_date: "2010-04-17T14:00:00Z",
+    code: "some code",
+    open_date: "2010-04-17T14:00:00Z",
+    room: "some room"
+  }
+  @update_attrs %{
+    close_date: "2011-05-18T15:01:01Z",
+    code: "some updated code",
+    open_date: "2011-05-18T15:01:01Z",
+    room: "some updated room"
+  }
   @invalid_attrs %{close_date: nil, code: nil, open_date: nil, room: nil}
 
   def fixture(:class) do
@@ -75,6 +85,7 @@ defmodule B2mlWeb.ClassControllerTest do
     test "deletes chosen class", %{conn: conn, class: class} do
       conn = delete(conn, Routes.class_path(conn, :delete, class))
       assert redirected_to(conn) == Routes.class_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.class_path(conn, :show, class))
       end

@@ -1,10 +1,10 @@
-<h1>Listing Teachers</h1>
+<h1><%= gettext "List all teachers" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Title</th>
+      <th><%= gettext "Name" %></th>
+      <th><%= gettext "Title" %></th>
 
       <th></th>
     </tr>
@@ -16,13 +16,13 @@
       <td><%= teacher.title %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.teacher_path(@conn, :show, teacher) %></span>
-        <span><%= link "Edit", to: Routes.teacher_path(@conn, :edit, teacher) %></span>
-        <span><%= link "Delete", to: Routes.teacher_path(@conn, :delete, teacher), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Show"), to: Routes.teacher_path(@conn, :show, teacher) %></span>
+        <span><%= link gettext("Edit"), to: Routes.teacher_path(@conn, :edit, teacher) %></span>
+        <span><%= link gettext("Delete"), to: Routes.teacher_path(@conn, :delete, teacher), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Teacher", to: Routes.teacher_path(@conn, :new) %></span>
+<span><%= link gettext("Add new teacher"), to: Routes.teacher_path(@conn, :new) %></span>

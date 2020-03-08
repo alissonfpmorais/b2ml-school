@@ -75,6 +75,7 @@ defmodule B2mlWeb.StudentControllerTest do
     test "deletes chosen student", %{conn: conn, student: student} do
       conn = delete(conn, Routes.student_path(conn, :delete, student))
       assert redirected_to(conn) == Routes.student_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.student_path(conn, :show, student))
       end

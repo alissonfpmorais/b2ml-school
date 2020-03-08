@@ -12,8 +12,18 @@
     <header>
       <section class="container">
         <nav role="navigation">
-          <ul>
-            <%= link "Home", to: Routes.page_path(@conn, :index) %>
+          <ul class="row">
+            <li class="column"><%= link "Home", to: Routes.page_path(@conn, :index) %></li>
+            <li class="column">
+              <%= link to: Routes.page_path(@conn, :index, current_path: @conn.request_path, locale: "pt_BR"), class: "flag" do %>
+                <img class="flag-img" src="<%= Routes.static_path(@conn, "/images/pt_BR.png") %>" alt="Portuguese">
+              <% end %>
+            </li>
+            <li class="column">
+              <%= link to: Routes.page_path(@conn, :index, current_path: @conn.request_path, locale: "en"), class: "flag" do %>
+                <img class="flag-img" src="<%= Routes.static_path(@conn, "/images/en_US.png") %>" alt="English">
+              <% end %>
+            </li>
           </ul>
         </nav>
         <a href="https://b2ml.com.br" class="b2ml-logo">

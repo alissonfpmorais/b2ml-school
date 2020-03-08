@@ -1,18 +1,18 @@
-<h1>Show Teacher</h1>
+<h1><%= gettext "Teacher" %></h1>
 
 <ul>
 
   <li>
-    <strong>Name:</strong>
+    <strong><%= gettext "Name" %>:</strong>
     <%= @teacher.name %>
   </li>
 
   <li>
-    <strong>Title:</strong>
+    <strong><%= gettext "Title" %>:</strong>
     <%= @teacher.title %>
   </li>
 
 </ul>
 
-<span><%= link "Edit", to: Routes.teacher_path(@conn, :edit, @teacher) %></span>
-<span><%= link "Back", to: Routes.teacher_path(@conn, :index) %></span>
+<span><%= link gettext("Edit"), to: Routes.teacher_path(@conn, :edit, @teacher) %></span>
+<span><%= link gettext("Back"), to: Routes.teacher_path(@conn, :index) %></span>

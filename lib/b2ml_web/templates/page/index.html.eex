@@ -1,39 +1,39 @@
 <section class="phx-hero">
-  <h1><%= gettext "Bem-vindo à %{name}!", name: "B2ml School!" %></h1>
-  <p>Um lugar onde você pode aprender<br/>e treinar suas habilidades.</p>
+  <h1><%= gettext "Welcome to %{name}!", name: "B2ml School!" %></h1>
+  <p><%= gettext "A place where you can learn" %><br/><%= gettext "and train your skills" %></p>
 </section>
 
 <section class="row">
   <article class="column">
-    <h2>Professores</h2>
+    <h2><%= gettext "Teachers" %></h2>
     <ul>
       <li>
-        <%= link "Lista de professores", to: Routes.teacher_path(@conn, :index) %>
+        <%= link gettext("List all teachers"), to: Routes.teacher_path(@conn, :index) %>
       </li>
       <li>
-        <%= link "Adicione um professor", to: Routes.teacher_path(@conn, :new) %>
+        <%= link gettext("Add new teacher"), to: Routes.teacher_path(@conn, :new) %>
       </li>
     </ul>
   </article>
   <article class="column">
-    <h2>Alunos</h2>
+    <h2><%= gettext "Students" %></h2>
     <ul>
       <li>
-        <%= link "Lista de alunos", to: Routes.student_path(@conn, :index) %>
+        <%= link gettext("List all students"), to: Routes.student_path(@conn, :index) %>
       </li>
       <li>
-        <%= link "Matricule um aluno", to: Routes.student_path(@conn, :new) %>
+        <%= link gettext("Register a student"), to: Routes.student_path(@conn, :new) %>
       </li>
     </ul>
   </article>
   <article class="column">
-    <h2>Turmas</h2>
+    <h2><%= gettext "Classes" %></h2>
     <ul>
       <li>
-        <%= link "Lista de turmas", to: Routes.class_path(@conn, :index) %>
+        <%= link gettext("List all classes"), to: Routes.class_path(@conn, :index) %>
       </li>
       <li>
-        <%= link "Criar uma turma", to: Routes.class_path(@conn, :new) %>
+        <%= link gettext("Create new class"), to: Routes.class_path(@conn, :new) %>
       </li>
     </ul>
   </article>

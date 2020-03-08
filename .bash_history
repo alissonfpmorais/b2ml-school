@@ -18,3 +18,25 @@ mix ecto.create
 mix local.hex
 mic ecto.create
 mix ecto.create
+mix deps.get
+iex -S mix phx.server
+clear
+mix gettext.extract --merge
+mix gettext.merge priv/gettext --locale pt_BR
+iex -S mix phx.server
+iex -S mix phx.server
+iex -S mix phx.server
+mix gettext.extract --merge
+mix gettext.extract --merge
+mix gettext.extract --merge
+iex -S mix phx.server
+iex -S mix phx.server
+iex -S mix phx.server
+mix gettext.extract --merge
+iex -S mix phx.server
+iex -S mix phx.server
+iex -S mix phx.server
+iex -S mix phx.server
+iex -S mix phx.server
+mix deps.get
+iex -S mix phx.server

@@ -8,6 +8,5 @@ defmodule B2ml.Repo.Migrations.CreateTeachers do
 
       timestamps()
     end
-
   end
 end

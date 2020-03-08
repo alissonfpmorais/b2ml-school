@@ -1,12 +1,12 @@
-<h1>Listing Classes</h1>
+<h1><%= gettext "List all classes" %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Room</th>
-      <th>Open date</th>
-      <th>Close date</th>
+      <th><%= gettext "Code" %></th>
+      <th><%= gettext "Room" %></th>
+      <th><%= gettext "Open date" %></th>
+      <th><%= gettext "Close date" %></th>
 
       <th></th>
     </tr>
@@ -20,13 +20,13 @@
       <td><%= class.close_date %></td>
 
       <td>
-        <span><%= link "Show", to: Routes.class_path(@conn, :show, class) %></span>
-        <span><%= link "Edit", to: Routes.class_path(@conn, :edit, class) %></span>
-        <span><%= link "Delete", to: Routes.class_path(@conn, :delete, class), method: :delete, data: [confirm: "Are you sure?"] %></span>
+        <span><%= link gettext("Show"), to: Routes.class_path(@conn, :show, class) %></span>
+        <span><%= link gettext("Edit"), to: Routes.class_path(@conn, :edit, class) %></span>
+        <span><%= link gettext("Delete"), to: Routes.class_path(@conn, :delete, class), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Class", to: Routes.class_path(@conn, :new) %></span>
+<span><%= link gettext("Create new class"), to: Routes.class_path(@conn, :new) %></span>

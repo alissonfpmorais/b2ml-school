@@ -1,4 +1,4 @@
-<h1>Edit Teacher</h1>
+<h1><%= gettext "Edit Teacher" %></h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.teacher_path(@conn, :update, @teacher)) %>
 

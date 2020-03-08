@@ -6,8 +6,18 @@ defmodule B2ml.SchoolTest do
   describe "classes" do
     alias B2ml.School.Class
 
-    @valid_attrs %{close_date: "2010-04-17T14:00:00Z", code: "some code", open_date: "2010-04-17T14:00:00Z", room: "some room"}
-    @update_attrs %{close_date: "2011-05-18T15:01:01Z", code: "some updated code", open_date: "2011-05-18T15:01:01Z", room: "some updated room"}
+    @valid_attrs %{
+      close_date: "2010-04-17T14:00:00Z",
+      code: "some code",
+      open_date: "2010-04-17T14:00:00Z",
+      room: "some room"
+    }
+    @update_attrs %{
+      close_date: "2011-05-18T15:01:01Z",
+      code: "some updated code",
+      open_date: "2011-05-18T15:01:01Z",
+      room: "some updated room"
+    }
     @invalid_attrs %{close_date: nil, code: nil, open_date: nil, room: nil}
 
     def class_fixture(attrs \\ %{}) do
