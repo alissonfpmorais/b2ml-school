@@ -1,6 +1,8 @@
 defmodule B2mlWeb.TeacherController do
   use B2mlWeb, :controller
+  import B2mlWeb.Gettext
 
+  alias B2ml.School
   alias B2ml.User
   alias B2ml.User.Teacher
 
@@ -17,8 +19,10 @@ defmodule B2mlWeb.TeacherController do
   def create(conn, %{"teacher" => teacher_params}) do
     case User.create_teacher(teacher_params) do
       {:ok, teacher} ->
+        message = gettext("%{resource} created successfuly.", %{resource: gettext("Teacher")})
+
         conn
-        |> put_flash(:info, "Teacher created successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.teacher_path(conn, :show, teacher))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -28,7 +32,8 @@ defmodule B2mlWeb.TeacherController do
 
   def show(conn, %{"id" => id}) do
     teacher = User.get_teacher!(id)
-    render(conn, "show.html", teacher: teacher)
+    classes = School.list_classes_by_teacher(teacher)
+    render(conn, "show.html", teacher: teacher, classes: classes)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -42,8 +47,10 @@ defmodule B2mlWeb.TeacherController do
 
     case User.update_teacher(teacher, teacher_params) do
       {:ok, teacher} ->
+        message = gettext("%{resource} updated successfully.", %{resource: gettext("Teacher")})
+
         conn
-        |> put_flash(:info, "Teacher updated successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.teacher_path(conn, :show, teacher))
 
       {:error, %Ecto.Changeset{} = changeset} ->

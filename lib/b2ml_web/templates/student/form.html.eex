@@ -5,13 +5,17 @@
     </div>
   <% end %>
 
-  <%= label f, :name %>
+  <%= label f, :name, gettext("Name") %>
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
 
-  <%= label f, :registration %>
+  <%= label f, :registration, gettext("Registration") %>
   <%= number_input f, :registration %>
   <%= error_tag f, :registration %>
+
+  <%= label f, :class_id, gettext("Class") %>
+  <%= select f, :class_id, class_select_options(@classes), prompt: gettext("Choose a class") %>
+  <%= error_tag f, :class_id %>
 
   <div>
     <%= submit gettext("Save") %>

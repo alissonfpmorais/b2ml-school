@@ -5,6 +5,7 @@ defmodule B2ml.User.Student do
   schema "students" do
     field :name, :string
     field :registration, :integer
+    belongs_to :class, B2ml.School.Class
 
     timestamps()
   end
@@ -12,7 +13,8 @@ defmodule B2ml.User.Student do
   @doc false
   def changeset(student, attrs) do
     student
-    |> cast(attrs, [:name, :registration])
-    |> validate_required([:name, :registration])
+    |> cast(attrs, [:name, :registration, :class_id])
+    |> validate_required([:name, :registration, :class_id])
+    |> assoc_constraint(:class)
   end
 end

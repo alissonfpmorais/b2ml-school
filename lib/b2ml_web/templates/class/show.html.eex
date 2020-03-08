@@ -22,6 +22,24 @@
     <%= @class.close_date %>
   </li>
 
+  <li>
+    <strong><%= gettext "Status" %>:</strong>
+    <%= is_class_open(@class.open_date, @class.close_date) %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Teacher" %>:</strong>
+    <%= @class.teacher.name %>
+  </li>
+
+  <li>
+    <strong><%= gettext "Students" %>:</strong>
+    <ul>
+      <%= for student <- @students do %>
+        <li><%= student.name %></li>
+      <% end %>
+    </ul>
+  </li>
 </ul>
 
 <span><%= link gettext("Edit"), to: Routes.class_path(@conn, :edit, @class) %></span>

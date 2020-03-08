@@ -7,6 +7,10 @@ defmodule B2ml.School do
   alias B2ml.Repo
 
   alias B2ml.School.Class
+  alias B2ml.User.{
+    Student,
+    Teacher
+  }
 
   @doc """
   Returns the list of classes.
@@ -19,6 +23,21 @@ defmodule B2ml.School do
   """
   def list_classes do
     Repo.all(Class)
+  end
+
+  @doc """
+  Returns the list of classes filtered by a given teacher.
+
+  ## Examples
+
+      iex> list_classes_by_teacher(teacher)
+      [%Class{}, ...]
+  """
+  def list_classes_by_teacher(teacher) do
+    Class
+    |> where([c], c.teacher_id == ^teacher.id)
+    |> select([c], c)
+    |> Repo.all
   end
 
   @doc """
@@ -38,7 +57,23 @@ defmodule B2ml.School do
   def get_class!(id), do: Repo.get!(Class, id)
 
   @doc """
-  Creates a class.
+  Preload a teacher from a given Class (or list of Classes).
+
+  ## Examples
+
+      iex> preload_teacher(class)
+      %Class{}
+
+      iex> preload_teacher(classes)
+      [%Class{}, ...]
+  """
+  def preload_teacher(teachers) do
+    teachers
+    |> Repo.preload(:teacher)
+  end
+
+  @doc """
+  Creates a class with a teacher associated teacher.
 
   ## Examples
 

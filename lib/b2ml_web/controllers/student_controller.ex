@@ -1,11 +1,17 @@
 defmodule B2mlWeb.StudentController do
   use B2mlWeb, :controller
+  import B2mlWeb.Gettext
 
+  alias B2ml.School
   alias B2ml.User
   alias B2ml.User.Student
 
+  plug :load_classes when action in [:new, :create, :edit, :update]
+
   def index(conn, _params) do
-    students = User.list_students()
+    students =
+      User.list_students()
+      |> User.preload_class()
     render(conn, "index.html", students: students)
   end
 
@@ -17,8 +23,10 @@ defmodule B2mlWeb.StudentController do
   def create(conn, %{"student" => student_params}) do
     case User.create_student(student_params) do
       {:ok, student} ->
+        message = gettext("%{resource} created successfuly.", %{resource: gettext("Student")})
+
         conn
-        |> put_flash(:info, "Student created successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.student_path(conn, :show, student))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -27,7 +35,10 @@ defmodule B2mlWeb.StudentController do
   end
 
   def show(conn, %{"id" => id}) do
-    student = User.get_student!(id)
+    student =
+      id
+      |> User.get_student!()
+      |> User.preload_class()
     render(conn, "show.html", student: student)
   end
 
@@ -42,8 +53,10 @@ defmodule B2mlWeb.StudentController do
 
     case User.update_student(student, student_params) do
       {:ok, student} ->
+        message = gettext("%{resource} updated successfully.", %{resource: gettext("Student")})
+
         conn
-        |> put_flash(:info, "Student updated successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.student_path(conn, :show, student))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -58,5 +71,9 @@ defmodule B2mlWeb.StudentController do
     conn
     |> put_flash(:info, "Student deleted successfully.")
     |> redirect(to: Routes.student_path(conn, :index))
+  end
+
+  defp load_classes(conn, _params) do
+    assign(conn, :classes, School.list_classes())
   end
 end

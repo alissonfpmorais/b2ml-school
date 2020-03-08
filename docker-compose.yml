@@ -13,9 +13,14 @@ services:
 
   db:
     image: postgres
-    ports:
-      - "5432:5432"
     environment:
       - POSTGRES_DB=b2ml_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  db_test:
+    image: postgres
+    environment:
+      - POSTGRES_DB=b2ml_test
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

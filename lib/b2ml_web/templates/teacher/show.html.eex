@@ -12,6 +12,17 @@
     <%= @teacher.title %>
   </li>
 
+  <li>
+    <strong><%= gettext "Classes" %>:</strong>
+    <ul>
+      <%= for class <- @classes do %>
+        <li>
+          <%= class.code %> (<%= gettext("Room") %> <%= class.room %>)
+        </li>
+      <% end %>
+    </ul>
+  </li>
+
 </ul>
 
 <span><%= link gettext("Edit"), to: Routes.teacher_path(@conn, :edit, @teacher) %></span>

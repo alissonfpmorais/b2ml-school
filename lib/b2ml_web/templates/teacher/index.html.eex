@@ -7,6 +7,8 @@
       <th><%= gettext "Title" %></th>
 
       <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -17,7 +19,11 @@
 
       <td>
         <span><%= link gettext("Show"), to: Routes.teacher_path(@conn, :show, teacher) %></span>
+      </td>
+      <td>
         <span><%= link gettext("Edit"), to: Routes.teacher_path(@conn, :edit, teacher) %></span>
+      </td>
+      <td>
         <span><%= link gettext("Delete"), to: Routes.teacher_path(@conn, :delete, teacher), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>

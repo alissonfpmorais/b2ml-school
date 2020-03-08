@@ -7,11 +7,11 @@ defmodule B2ml.Repo.Migrations.CreateClasses do
       add :room, :string
       add :open_date, :utc_datetime
       add :close_date, :utc_datetime
-      add :teacher, references(:teachers, on_delete: :nothing)
+      add :teacher_id, references(:teachers, on_delete: :nothing)
 
       timestamps()
     end
 
-    create unique_index(:classes, [:code, :room, :teacher])
+    create unique_index(:classes, [:code, :room, :teacher_id])
   end
 end

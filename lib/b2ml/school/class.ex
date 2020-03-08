@@ -7,7 +7,7 @@ defmodule B2ml.School.Class do
     field :code, :string
     field :open_date, :utc_datetime
     field :room, :string
-    field :teacher, :id
+    belongs_to :teacher, B2ml.User.Teacher
 
     timestamps()
   end
@@ -15,7 +15,8 @@ defmodule B2ml.School.Class do
   @doc false
   def changeset(class, attrs) do
     class
-    |> cast(attrs, [:code, :room, :open_date, :close_date])
-    |> validate_required([:code, :room, :open_date, :close_date])
+    |> cast(attrs, [:code, :room, :open_date, :close_date, :teacher_id])
+    |> validate_required([:code, :room, :open_date, :close_date, :teacher_id])
+    |> assoc_constraint(:teacher)
   end
 end

@@ -5,7 +5,11 @@
     <tr>
       <th><%= gettext "Name" %></th>
       <th><%= gettext "Registration" %></th>
+      <th><%= gettext "Class" %></th>
+      <th><%= gettext "Room" %></th>
 
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -14,10 +18,16 @@
     <tr>
       <td><%= student.name %></td>
       <td><%= student.registration %></td>
+      <td><%= student.class.code %></td>
+      <td><%= student.class.room %></td>
 
       <td>
         <span><%= link gettext("Show"), to: Routes.student_path(@conn, :show, student) %></span>
+      </td>
+      <td>
         <span><%= link gettext("Edit"), to: Routes.student_path(@conn, :edit, student) %></span>
+      </td>
+      <td>
         <span><%= link gettext("Delete"), to: Routes.student_path(@conn, :delete, student), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>

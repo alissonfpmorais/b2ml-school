@@ -1,11 +1,17 @@
 defmodule B2mlWeb.ClassController do
   use B2mlWeb, :controller
+  import B2mlWeb.Gettext
 
   alias B2ml.School
   alias B2ml.School.Class
+  alias B2ml.User
+
+  plug :load_teachers when action in [:new, :create, :edit, :update]
 
   def index(conn, _params) do
-    classes = School.list_classes()
+    classes =
+      School.list_classes()
+      |> School.preload_teacher()
     render(conn, "index.html", classes: classes)
   end
 
@@ -17,8 +23,10 @@ defmodule B2mlWeb.ClassController do
   def create(conn, %{"class" => class_params}) do
     case School.create_class(class_params) do
       {:ok, class} ->
+        message = gettext("%{resource} created successfuly.", %{resource: gettext("Class")})
+
         conn
-        |> put_flash(:info, "Class created successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.class_path(conn, :show, class))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -27,8 +35,14 @@ defmodule B2mlWeb.ClassController do
   end
 
   def show(conn, %{"id" => id}) do
-    class = School.get_class!(id)
-    render(conn, "show.html", class: class)
+    class =
+      id
+      |> School.get_class!()
+      |> School.preload_teacher()
+    students = User.list_students_by_class(class)
+    # students = [%{name: "alisson"}]
+
+    render(conn, "show.html", class: class, students: students)
   end
 
   def edit(conn, %{"id" => id}) do
@@ -42,8 +56,10 @@ defmodule B2mlWeb.ClassController do
 
     case School.update_class(class, class_params) do
       {:ok, class} ->
+        message = gettext("%{resource} updated successfully.", %{resource: gettext("Class")})
+
         conn
-        |> put_flash(:info, "Class updated successfully.")
+        |> put_flash(:info, message)
         |> redirect(to: Routes.class_path(conn, :show, class))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -58,5 +74,9 @@ defmodule B2mlWeb.ClassController do
     conn
     |> put_flash(:info, "Class deleted successfully.")
     |> redirect(to: Routes.class_path(conn, :index))
+  end
+
+  defp load_teachers(conn, _params) do
+    assign(conn, :teachers, User.list_teachers())
   end
 end

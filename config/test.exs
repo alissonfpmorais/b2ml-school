@@ -5,7 +5,7 @@ config :b2ml, B2ml.Repo,
   username: "postgres",
   password: "postgres",
   database: "b2ml_test",
-  hostname: "localhost",
+  hostname: "db_test",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,

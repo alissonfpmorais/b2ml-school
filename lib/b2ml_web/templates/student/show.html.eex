@@ -12,6 +12,12 @@
     <%= @student.registration %>
   </li>
 
+  <li>
+    <strong><%= gettext "Class" %>:</strong>
+    <%= @student.class.code %>
+    (<%= gettext "Room" %> <%= @student.class.room %>)
+  </li>
+
 </ul>
 
 <span><%= link gettext("Edit"), to: Routes.student_path(@conn, :edit, @student) %></span>

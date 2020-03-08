@@ -5,21 +5,25 @@
     </div>
   <% end %>
 
-  <%= label f, :code %>
+  <%= label f, :code, gettext("Code") %>
   <%= text_input f, :code %>
   <%= error_tag f, :code %>
 
-  <%= label f, :room %>
+  <%= label f, :room, gettext("Room") %>
   <%= text_input f, :room %>
   <%= error_tag f, :room %>
 
-  <%= label f, :open_date %>
-  <%= datetime_select f, :open_date %>
+  <%= label f, :open_date, gettext("Open date") %>
+  <%= custom_datetime_select f, :open_date, locale: @conn.cookies["locale"] %>
   <%= error_tag f, :open_date %>
 
-  <%= label f, :close_date %>
-  <%= datetime_select f, :close_date %>
+  <%= label f, :close_date, gettext("Close date") %>
+  <%= custom_datetime_select f, :close_date, locale: @conn.cookies["locale"] %>
   <%= error_tag f, :close_date %>
+
+  <%= label f, :teacher_id, gettext("Teacher") %>
+  <%= select f, :teacher_id, teacher_select_options(@teachers), prompt: gettext("Choose a teacher") %>
+  <%= error_tag f, :teacher_id %>
 
   <div>
     <%= submit gettext("Save") %>

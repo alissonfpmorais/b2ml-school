@@ -118,6 +118,21 @@ defmodule B2ml.User do
   end
 
   @doc """
+  Returns the list of students filtered by a given class.
+
+  ## Examples
+
+      iex> list_students_by_class(class)
+      [%Student{}, ...]
+  """
+  def list_students_by_class(class) do
+    Student
+    |> where([s], s.class_id == ^class.id)
+    |> select([s], s)
+    |> Repo.all()
+  end
+
+  @doc """
   Gets a single student.
 
   Raises `Ecto.NoResultsError` if the Student does not exist.
@@ -132,6 +147,22 @@ defmodule B2ml.User do
 
   """
   def get_student!(id), do: Repo.get!(Student, id)
+
+  @doc """
+  Preload a class from a given Student (or list of Students).
+
+  ## Examples
+
+      iex> preload_class(student)
+      %Student{}
+
+      iex> preload_class(students)
+      [%Student{}, ...]
+  """
+  def preload_class(students) do
+    students
+    |> Repo.preload(:class)
+  end
 
   @doc """
   Creates a student.

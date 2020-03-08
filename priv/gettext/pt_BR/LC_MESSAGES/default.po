@@ -23,12 +23,12 @@ msgstr "Um lugar onde você pode aprender"
 
 #, elixir-format
 #: lib/b2ml_web/templates/page/index.html.eex:14
-#: lib/b2ml_web/templates/teacher/index.html.eex:28 lib/b2ml_web/templates/teacher/new.html.eex:1
+#: lib/b2ml_web/templates/teacher/index.html.eex:34 lib/b2ml_web/templates/teacher/new.html.eex:1
 msgid "Add new teacher"
-msgstr "Adicionar novo professor"
+msgstr "Adicionar novo professor(a)"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:32
+#: lib/b2ml_web/templates/class/index.html.eex:42
 #: lib/b2ml_web/templates/class/new.html.eex:1 lib/b2ml_web/templates/page/index.html.eex:36
 msgid "Create new class"
 msgstr "Criar nova turma"
@@ -53,9 +53,9 @@ msgstr "Lista dos professores"
 
 #, elixir-format
 #: lib/b2ml_web/templates/page/index.html.eex:25
-#: lib/b2ml_web/templates/student/index.html.eex:28 lib/b2ml_web/templates/student/new.html.eex:1
+#: lib/b2ml_web/templates/student/index.html.eex:38 lib/b2ml_web/templates/student/new.html.eex:1
 msgid "Register a student"
-msgstr "Matricule um estudante"
+msgstr "Matricule um aluno(a)"
 
 #, elixir-format
 #: lib/b2ml_web/templates/page/index.html.eex:8
@@ -69,72 +69,78 @@ msgstr "e treinar suas habilidades"
 
 #, elixir-format
 #: lib/b2ml_web/templates/page/index.html.eex:30
+#: lib/b2ml_web/templates/teacher/show.html.eex:16
 msgid "Classes"
 msgstr "Turmas"
 
 #, elixir-format
+#: lib/b2ml_web/templates/class/show.html.eex:36
 #: lib/b2ml_web/templates/page/index.html.eex:19
 msgid "Students"
 msgstr "Alunos"
 
 #, elixir-format
 #: lib/b2ml_web/templates/class/edit.html.eex:5
-#: lib/b2ml_web/templates/class/new.html.eex:5 lib/b2ml_web/templates/class/show.html.eex:28
+#: lib/b2ml_web/templates/class/new.html.eex:5 lib/b2ml_web/templates/class/show.html.eex:46
 #: lib/b2ml_web/templates/student/edit.html.eex:5 lib/b2ml_web/templates/student/new.html.eex:5
-#: lib/b2ml_web/templates/student/show.html.eex:18 lib/b2ml_web/templates/teacher/new.html.eex:5
-#: lib/b2ml_web/templates/teacher/show.html.eex:18
+#: lib/b2ml_web/templates/student/show.html.eex:24 lib/b2ml_web/templates/teacher/new.html.eex:5
+#: lib/b2ml_web/templates/teacher/show.html.eex:29
 msgid "Back"
 msgstr "Voltar"
 
-#, elixir-format, fuzzy
-#: lib/b2ml_web/templates/class/show.html.eex:1
+#, elixir-format
+#: lib/b2ml_web/controllers/class_controller.ex:26
+#: lib/b2ml_web/controllers/class_controller.ex:59 lib/b2ml_web/templates/class/show.html.eex:1
+#: lib/b2ml_web/templates/student/form.html.eex:16 lib/b2ml_web/templates/student/index.html.eex:8
+#: lib/b2ml_web/templates/student/show.html.eex:16
 msgid "Class"
-msgstr "Turmas"
+msgstr "Turma"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:9
-#: lib/b2ml_web/templates/class/show.html.eex:21
+#: lib/b2ml_web/templates/class/form.html.eex:20
+#: lib/b2ml_web/templates/class/index.html.eex:9 lib/b2ml_web/templates/class/show.html.eex:21
 msgid "Close date"
 msgstr "Data de fim"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:6
-#: lib/b2ml_web/templates/class/show.html.eex:6
+#: lib/b2ml_web/templates/class/form.html.eex:8
+#: lib/b2ml_web/templates/class/index.html.eex:6 lib/b2ml_web/templates/class/show.html.eex:6
 msgid "Code"
 msgstr "Código"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:25
-#: lib/b2ml_web/templates/student/index.html.eex:21 lib/b2ml_web/templates/teacher/index.html.eex:21
+#: lib/b2ml_web/templates/class/index.html.eex:35
+#: lib/b2ml_web/templates/student/index.html.eex:31 lib/b2ml_web/templates/teacher/index.html.eex:27
 msgid "Delete"
 msgstr "Deletar"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:24
-#: lib/b2ml_web/templates/class/show.html.eex:27 lib/b2ml_web/templates/student/index.html.eex:20
-#: lib/b2ml_web/templates/student/show.html.eex:17 lib/b2ml_web/templates/teacher/index.html.eex:20
-#: lib/b2ml_web/templates/teacher/show.html.eex:17
+#: lib/b2ml_web/templates/class/index.html.eex:32
+#: lib/b2ml_web/templates/class/show.html.eex:45 lib/b2ml_web/templates/student/index.html.eex:28
+#: lib/b2ml_web/templates/student/show.html.eex:23 lib/b2ml_web/templates/teacher/index.html.eex:24
+#: lib/b2ml_web/templates/teacher/show.html.eex:28
 msgid "Edit"
 msgstr "Editar"
 
 #, elixir-format
 #: lib/b2ml_web/templates/class/edit.html.eex:1
 msgid "Edit Class"
-msgstr "Editar Turmar"
+msgstr "Editar Turma"
 
 #, elixir-format
 #: lib/b2ml_web/templates/student/edit.html.eex:1
 msgid "Edit Student"
-msgstr "Editar Aluno"
+msgstr "Editar Aluno(a)"
 
-#, elixir-format, fuzzy
+#, elixir-format
 #: lib/b2ml_web/templates/teacher/edit.html.eex:1
 msgid "Edit Teacher"
 msgstr "Editar Professores"
 
 #, elixir-format
-#: lib/b2ml_web/templates/student/index.html.eex:6
-#: lib/b2ml_web/templates/student/show.html.eex:6 lib/b2ml_web/templates/teacher/index.html.eex:6
+#: lib/b2ml_web/templates/student/form.html.eex:8
+#: lib/b2ml_web/templates/student/index.html.eex:6 lib/b2ml_web/templates/student/show.html.eex:6
+#: lib/b2ml_web/templates/teacher/form.html.eex:8 lib/b2ml_web/templates/teacher/index.html.eex:6
 #: lib/b2ml_web/templates/teacher/show.html.eex:6
 msgid "Name"
 msgstr "Nome"
@@ -146,47 +152,151 @@ msgid "Oops, something went wrong! Please check the errors below."
 msgstr "Opa, algo de errado aconteceu! Por favor confira os erros abaixo."
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:8
-#: lib/b2ml_web/templates/class/show.html.eex:16
+#: lib/b2ml_web/templates/class/form.html.eex:16
+#: lib/b2ml_web/templates/class/index.html.eex:8 lib/b2ml_web/templates/class/show.html.eex:16
 msgid "Open date"
 msgstr "Data de início"
 
 #, elixir-format
-#: lib/b2ml_web/templates/student/index.html.eex:7
-#: lib/b2ml_web/templates/student/show.html.eex:11
+#: lib/b2ml_web/templates/student/form.html.eex:12
+#: lib/b2ml_web/templates/student/index.html.eex:7 lib/b2ml_web/templates/student/show.html.eex:11
 msgid "Registration"
 msgstr "Matrícula"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:7
-#: lib/b2ml_web/templates/class/show.html.eex:11
+#: lib/b2ml_web/templates/class/form.html.eex:12
+#: lib/b2ml_web/templates/class/index.html.eex:7 lib/b2ml_web/templates/class/show.html.eex:11
+#: lib/b2ml_web/templates/student/index.html.eex:9 lib/b2ml_web/templates/student/show.html.eex:18
+#: lib/b2ml_web/templates/teacher/show.html.eex:20
 msgid "Room"
 msgstr "Sala"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/form.html.eex:25
-#: lib/b2ml_web/templates/student/form.html.eex:17 lib/b2ml_web/templates/teacher/form.html.eex:17
+#: lib/b2ml_web/templates/class/form.html.eex:29
+#: lib/b2ml_web/templates/student/form.html.eex:21 lib/b2ml_web/templates/teacher/form.html.eex:17
 msgid "Save"
 msgstr "Salvar"
 
 #, elixir-format
-#: lib/b2ml_web/templates/class/index.html.eex:23
-#: lib/b2ml_web/templates/student/index.html.eex:19 lib/b2ml_web/templates/teacher/index.html.eex:19
+#: lib/b2ml_web/templates/class/index.html.eex:29
+#: lib/b2ml_web/templates/student/index.html.eex:25 lib/b2ml_web/templates/teacher/index.html.eex:21
 msgid "Show"
 msgstr "Mostrar"
 
-#, elixir-format, fuzzy
-#: lib/b2ml_web/templates/student/show.html.eex:1
+#, elixir-format
+#: lib/b2ml_web/controllers/student_controller.ex:26
+#: lib/b2ml_web/controllers/student_controller.ex:56 lib/b2ml_web/templates/student/show.html.eex:1
 msgid "Student"
-msgstr "Aluno"
-
-#, elixir-format, fuzzy
-#: lib/b2ml_web/templates/teacher/show.html.eex:1
-msgid "Teacher"
-msgstr "Professor"
+msgstr "Aluno(a)"
 
 #, elixir-format
-#: lib/b2ml_web/templates/teacher/index.html.eex:7
-#: lib/b2ml_web/templates/teacher/show.html.eex:11
+#: lib/b2ml_web/controllers/teacher_controller.ex:22
+#: lib/b2ml_web/controllers/teacher_controller.ex:50 lib/b2ml_web/templates/class/form.html.eex:24
+#: lib/b2ml_web/templates/class/index.html.eex:11 lib/b2ml_web/templates/class/show.html.eex:31
+#: lib/b2ml_web/templates/teacher/show.html.eex:1
+msgid "Teacher"
+msgstr "Professor(a)"
+
+#, elixir-format
+#: lib/b2ml_web/templates/teacher/form.html.eex:12
+#: lib/b2ml_web/templates/teacher/index.html.eex:7 lib/b2ml_web/templates/teacher/show.html.eex:11
 msgid "Title"
 msgstr "Título"
+
+#, elixir-format
+#: lib/b2ml_web/templates/class/form.html.eex:25
+msgid "Choose a teacher"
+msgstr "Escolha um professor(a)"
+
+#, elixir-format
+#: lib/b2ml_web/controllers/class_controller.ex:26
+#: lib/b2ml_web/controllers/student_controller.ex:26 lib/b2ml_web/controllers/teacher_controller.ex:22
+msgid "%{resource} created successfuly."
+msgstr "%{resource} criado(a) com sucesso."
+
+#, elixir-format
+#: lib/b2ml_web/controllers/class_controller.ex:59
+#: lib/b2ml_web/controllers/student_controller.ex:56 lib/b2ml_web/controllers/teacher_controller.ex:50
+msgid "%{resource} updated successfully."
+msgstr "%{resource} atualizado(a) com sucesso."
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:66
+msgid "April"
+msgstr "Abril"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:70
+msgid "August"
+msgstr "Agosto"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:74
+msgid "December"
+msgstr "Dezembro"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:64
+msgid "February"
+msgstr "Fevereiro"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:63
+msgid "January"
+msgstr "Janeiro"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:69
+msgid "July"
+msgstr "Julho"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:68
+msgid "June"
+msgstr "Junho"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:65
+msgid "March"
+msgstr "Março"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:67
+msgid "May"
+msgstr "Maio"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:73
+msgid "November"
+msgstr "Novembro"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:72
+msgid "October"
+msgstr "Outubro"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:71
+msgid "September"
+msgstr "Setembro"
+
+#, elixir-format
+#: lib/b2ml_web/templates/student/form.html.eex:17
+msgid "Choose a class"
+msgstr "Escolha uma turma"
+
+#, elixir-format, fuzzy
+#: lib/b2ml_web/views/class_view.ex:28
+msgid "Closed"
+msgstr "Fechada"
+
+#, elixir-format
+#: lib/b2ml_web/views/class_view.ex:25
+msgid "Opened"
+msgstr "Aberta"
+
+#, elixir-format
+#: lib/b2ml_web/templates/class/index.html.eex:10
+#: lib/b2ml_web/templates/class/show.html.eex:26
+msgid "Status"
+msgstr "Status"
