@@ -1,6 +1,7 @@
 defmodule B2ml.UserTest do
   use B2ml.DataCase
 
+  alias B2ml.School
   alias B2ml.User
 
   describe "teachers" do
@@ -71,6 +72,18 @@ defmodule B2ml.UserTest do
     @update_attrs %{name: "some updated name", registration: 43}
     @invalid_attrs %{name: nil, registration: nil}
 
+    def class_fixture(teacher_id) do
+      {:ok, class} = School.create_class(%{
+        close_date: "2010-04-17T14:00:00Z",
+        code: "some code",
+        open_date: "2010-04-17T14:00:00Z",
+        room: "some room",
+        teacher_id: teacher_id
+      })
+
+      class
+    end
+
     def student_fixture(attrs \\ %{}) do
       {:ok, student} =
         attrs
@@ -80,47 +93,65 @@ defmodule B2ml.UserTest do
       student
     end
 
-    test "list_students/0 returns all students" do
-      student = student_fixture()
+    setup do
+      teacher = teacher_fixture()
+      class = class_fixture(teacher.id)
+      {:ok, class: class}
+    end
+
+    test "list_students/0 returns all students", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
       assert User.list_students() == [student]
     end
 
-    test "get_student!/1 returns the student with given id" do
-      student = student_fixture()
+    test "get_student!/1 returns the student with given id", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
       assert User.get_student!(student.id) == student
     end
 
-    test "create_student/1 with valid data creates a student" do
-      assert {:ok, %Student{} = student} = User.create_student(@valid_attrs)
+    test "create_student/1 with valid data creates a student", %{class: class} do
+      valid_attrs =
+        @valid_attrs
+        |> Map.put(:class_id, class.id)
+
+      assert {:ok, %Student{} = student} = User.create_student(valid_attrs)
       assert student.name == "some name"
       assert student.registration == 42
     end
 
-    test "create_student/1 with invalid data returns error changeset" do
-      assert {:error, %Ecto.Changeset{}} = User.create_student(@invalid_attrs)
+    test "create_student/1 with invalid data returns error changeset", %{class: class} do
+      invalid_attrs =
+        @invalid_attrs
+        |> Map.put(:class_id, class.id)
+
+      assert {:error, %Ecto.Changeset{}} = User.create_student(invalid_attrs)
     end
 
-    test "update_student/2 with valid data updates the student" do
-      student = student_fixture()
+    test "update_student/2 with valid data updates the student", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
       assert {:ok, %Student{} = student} = User.update_student(student, @update_attrs)
       assert student.name == "some updated name"
       assert student.registration == 43
     end
 
-    test "update_student/2 with invalid data returns error changeset" do
-      student = student_fixture()
-      assert {:error, %Ecto.Changeset{}} = User.update_student(student, @invalid_attrs)
+    test "update_student/2 with invalid data returns error changeset", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
+      invalid_attrs =
+        @invalid_attrs
+        |> Map.put(:class_id, class.id)
+
+      assert {:error, %Ecto.Changeset{}} = User.update_student(student, invalid_attrs)
       assert student == User.get_student!(student.id)
     end
 
-    test "delete_student/1 deletes the student" do
-      student = student_fixture()
+    test "delete_student/1 deletes the student", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
       assert {:ok, %Student{}} = User.delete_student(student)
       assert_raise Ecto.NoResultsError, fn -> User.get_student!(student.id) end
     end
 
-    test "change_student/1 returns a student changeset" do
-      student = student_fixture()
+    test "change_student/1 returns a student changeset", %{class: class} do
+      student = student_fixture(%{class_id: class.id})
       assert %Ecto.Changeset{} = User.change_student(student)
     end
   end
