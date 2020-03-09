@@ -102,3 +102,21 @@ mix ecto.reset
 mix test
 mix test
 mix test
+mix local.hex
+mix ecto.migrate
+mix test
+clear
+mix ecto.gen.migration add_class_references_to_student
+mix ecto.migrate
+mix gettext.extract --merge
+mix gettext.extract --merge
+clear
+iex -S mix phx.server
+clear
+iex -S mix phx.server
+mix gettext.extract --merge
+iex -S mix phx.server
+mix test
+mix local.hex
+mix local.hex --force
+mix local.hex
