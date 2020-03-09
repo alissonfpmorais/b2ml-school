@@ -145,3 +145,16 @@ echo MIX_ENV
 echo $MIX_ENV
 mix test
 mix test
+mix local.hex --force
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix ecto.migrate

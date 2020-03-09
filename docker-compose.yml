@@ -9,7 +9,7 @@ services:
       - 4000:4000
     stdin_open: true
     tty: true
-    command: bash
+    command: bash -c "mix local.hex --force && mix ecto.migrate && mix phx.server"
 
   db:
     image: postgres
