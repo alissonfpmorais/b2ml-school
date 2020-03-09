@@ -103,7 +103,7 @@ defmodule B2mlWeb.ClassControllerTest do
         @invalid_attrs
         |> Map.put(:teacher_id, teacher.id)
 
-      conn = put(conn, Routes.class_path(conn, :update, class), class: @invalid_attrs)
+      conn = put(conn, Routes.class_path(conn, :update, class), class: invalid_attrs)
       assert html_response(conn, 200) =~ gettext("Edit Class")
     end
   end
@@ -125,11 +125,6 @@ defmodule B2mlWeb.ClassControllerTest do
     teacher = fixture(:teacher)
     {:ok, class: class} = create_class(teacher.id)
     {:ok, teacher: teacher, class: class}
-  end
-
-  defp create_teacher(_) do
-    teacher = fixture(:teacher)
-    {:ok, teacher: teacher}
   end
 
   defp create_class(teacher_id) do

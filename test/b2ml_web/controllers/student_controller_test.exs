@@ -60,8 +60,6 @@ defmodule B2mlWeb.StudentControllerTest do
         |> Map.put(:registration, 44)
         |> Map.put(:class_id, class.id)
 
-      IO.inspect create_attrs
-
       conn = post(conn, Routes.student_path(conn, :create), student: create_attrs)
 
       assert %{id: id} = redirected_params(conn)
