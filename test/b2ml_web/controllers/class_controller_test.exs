@@ -51,11 +51,12 @@ defmodule B2mlWeb.ClassControllerTest do
   end
 
   describe "create class" do
-    setup [:create_teacher]
+    setup [:create_initial_setup]
 
     test "redirects to show when data is valid", %{conn: conn, teacher: teacher} do
       create_attrs =
         @create_attrs
+        |> Map.put(:code, "another code")
         |> Map.put(:teacher_id, teacher.id)
 
       conn = post(conn, Routes.class_path(conn, :create), class: create_attrs)
@@ -97,7 +98,11 @@ defmodule B2mlWeb.ClassControllerTest do
       assert html_response(conn, 200) =~ "some updated code"
     end
 
-    test "renders errors when data is invalid", %{conn: conn, class: class} do
+    test "renders errors when data is invalid", %{conn: conn, teacher: teacher, class: class} do
+      invalid_attrs =
+        @invalid_attrs
+        |> Map.put(:teacher_id, teacher.id)
+
       conn = put(conn, Routes.class_path(conn, :update, class), class: @invalid_attrs)
       assert html_response(conn, 200) =~ gettext("Edit Class")
     end
@@ -118,7 +123,8 @@ defmodule B2mlWeb.ClassControllerTest do
 
   defp create_initial_setup(_) do
     teacher = fixture(:teacher)
-    create_class(teacher.id)
+    {:ok, class: class} = create_class(teacher.id)
+    {:ok, teacher: teacher, class: class}
   end
 
   defp create_teacher(_) do

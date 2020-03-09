@@ -138,3 +138,10 @@ iex
 mix test
 mix test
 mix test
+mix local --force
+mix local.hex --force
+mix test
+echo MIX_ENV
+echo $MIX_ENV
+mix test
+mix test

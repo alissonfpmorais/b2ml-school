@@ -12,6 +12,6 @@ defmodule B2ml.Repo.Migrations.CreateClasses do
       timestamps()
     end
 
-    create unique_index(:classes, [:code, :room, :teacher_id])
+    create unique_index(:classes, [:code])
   end
 end
