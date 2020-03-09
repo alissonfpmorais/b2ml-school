@@ -120,3 +120,21 @@ mix test
 mix local.hex
 mix local.hex --force
 mix local.hex
+mix local.hex --force
+mix test
+iex -S mix phx.server
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+mix test
+iex
+mix test
+mix test
+mix test
