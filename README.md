@@ -34,5 +34,14 @@ docker-compose up -d
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 
+### Tests
+To run the tests, first you need to run the project (make sure by navigating to http://localhost:4000).
+
+After that, just run the command bellow:
+```shell
+docker exec -it b2ml_app_1 bash -c "mix test"
+```
+
+
 ### Notes
 If you encounter any PORT issues when running the project, thats because it uses port 4000 for the frontend and 5432 for the database.
